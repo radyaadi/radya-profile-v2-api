@@ -9,8 +9,6 @@ import { tagRoute } from './routes/tag.router.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
-connectToDb();
-
 app.use(express.json());
 // app.use(cors({ origin: 'https://netai.vercel.app' }));
 
@@ -22,4 +20,6 @@ app.get('/', (req, res) => {
   res.send('Hi');
 });
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+connectToDb().then(() => {
+  app.listen(port, () => console.log(`Server is running on port ${port}`));
+});
