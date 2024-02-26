@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
-// app.use(cors({ origin: 'https://netai.vercel.app' }));
+// app.use(cors({ origin: '' }));
 
 app.use('/portfolio', portfolioRoute);
 app.use('/category', categoryRoute);
