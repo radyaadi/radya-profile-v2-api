@@ -39,7 +39,8 @@ export const getPortfolioById = async (req, res) => {
 };
 
 export const createPortfolio = async (req, res) => {
-  const { title, description, images, repo_url, category, tags } = req.body;
+  const { title, description, images, repo_url, category, tags, published_at } =
+    req.body;
 
   try {
     const newPortfolio = new Portfolio({
@@ -49,6 +50,7 @@ export const createPortfolio = async (req, res) => {
       repo_url,
       category,
       tags,
+      published_at,
     });
     await newPortfolio.save();
 
@@ -73,7 +75,7 @@ export const updatePortfolio = async (req, res) => {
       repo_url,
       category,
       tags,
-      update_at: new Date(),
+      updated_at: new Date(),
     });
     return res.json({
       success: true,
