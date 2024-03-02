@@ -5,7 +5,7 @@ export const getAllCatergories = async (req, res) => {
     const catergories = await Catergory.find().sort({
       name: 'asc',
     });
-    return res.json({ success: true, data: catergories });
+    return res.json(catergories);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -16,7 +16,7 @@ export const getCatergoryById = async (req, res) => {
 
   try {
     const catergory = await Catergory.findById(catergoryId);
-    return res.json({ success: true, data: catergory });
+    return res.json(catergory);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }

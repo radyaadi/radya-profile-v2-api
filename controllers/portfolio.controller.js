@@ -13,7 +13,7 @@ export const getAllPortfolios = async (req, res) => {
         path: 'tags',
         model: Tag,
       });
-    return res.json({ success: true, data: portfolios });
+    return res.json(portfolios);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -32,14 +32,14 @@ export const getPortfolioById = async (req, res) => {
         path: 'tags',
         model: Tag,
       });
-    return res.json({ success: true, data: portfolio });
+    return res.json(portfolio);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
 
 export const createPortfolio = async (req, res) => {
-  const { title, description, images, repo_url, category, tags, published_at } =
+  const { title, description, images, repo_url, category, tags, created_at } =
     req.body;
 
   try {
@@ -50,7 +50,7 @@ export const createPortfolio = async (req, res) => {
       repo_url,
       category,
       tags,
-      published_at,
+      created_at,
     });
     await newPortfolio.save();
 
@@ -65,7 +65,8 @@ export const createPortfolio = async (req, res) => {
 
 export const updatePortfolio = async (req, res) => {
   const { portfolioId } = req.params;
-  const { title, description, images, repo_url, category, tags } = req.body;
+  const { title, description, images, repo_url, category, tags, created_at } =
+    req.body;
 
   try {
     await Portfolio.findByIdAndUpdate(portfolioId, {
@@ -75,7 +76,7 @@ export const updatePortfolio = async (req, res) => {
       repo_url,
       category,
       tags,
-      updated_at: new Date(),
+      created_at,
     });
     return res.json({
       success: true,

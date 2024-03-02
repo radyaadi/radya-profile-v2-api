@@ -8,9 +8,7 @@ const portfolioSchema = new mongoose.Schema({
   repo_url: { type: String },
   category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
   tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
-  published_at: { type: Date, required: true },
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
+  created_at: { type: Date, required: true },
 });
 
 const Portfolio =

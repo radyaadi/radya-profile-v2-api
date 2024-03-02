@@ -5,7 +5,7 @@ export const getAllTags = async (req, res) => {
     const tags = await Tag.find().sort({
       name: 'asc',
     });
-    return res.json({ success: true, data: tags });
+    return res.json(tags);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -16,7 +16,7 @@ export const getTagById = async (req, res) => {
 
   try {
     const tag = await Tag.findById(tagId);
-    return res.json({ success: true, data: tag });
+    return res.json(tag);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }

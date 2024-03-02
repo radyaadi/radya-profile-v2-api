@@ -17,7 +17,7 @@ app.use('/category', categoryRoute);
 app.use('/tag', tagRoute);
 
 app.get('/', (req, res) => {
-  res.send('Hi');
+  res.send('Hi!, use end point /portfolio, /cateegory, /tag');
 });
 
 connectToDb().then(() => {
