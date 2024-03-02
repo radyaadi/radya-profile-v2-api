@@ -39,14 +39,21 @@ export const getPortfolioById = async (req, res) => {
 };
 
 export const createPortfolio = async (req, res) => {
-  const { title, description, images, repo_url, category, tags, created_at } =
-    req.body;
+  const {
+    title,
+    description,
+    image_url,
+    repo_url,
+    category,
+    tags,
+    created_at,
+  } = req.body;
 
   try {
     const newPortfolio = new Portfolio({
       title,
       description,
-      images,
+      image_url,
       repo_url,
       category,
       tags,
@@ -65,14 +72,21 @@ export const createPortfolio = async (req, res) => {
 
 export const updatePortfolio = async (req, res) => {
   const { portfolioId } = req.params;
-  const { title, description, images, repo_url, category, tags, created_at } =
-    req.body;
+  const {
+    title,
+    description,
+    image_url,
+    repo_url,
+    category,
+    tags,
+    created_at,
+  } = req.body;
 
   try {
     await Portfolio.findByIdAndUpdate(portfolioId, {
       title,
       description,
-      images,
+      image_url,
       repo_url,
       category,
       tags,

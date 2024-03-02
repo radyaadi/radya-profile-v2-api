@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const portfolioSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  images: [{ type: String }],
+  image_url: { type: String },
   product_url: { type: String },
   repo_url: { type: String },
   category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
