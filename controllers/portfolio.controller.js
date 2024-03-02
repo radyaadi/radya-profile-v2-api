@@ -8,10 +8,12 @@ export const getAllPortfolios = async (req, res) => {
       .populate({
         path: 'category',
         model: Category,
+        select: ['_id ', 'name'],
       })
       .populate({
         path: 'tags',
         model: Tag,
+        select: ['_id ', 'name'],
       });
     return res.json(portfolios);
   } catch (error) {
